@@ -1,0 +1,21 @@
+- 
+  name: Deploy a web-app
+  hosts: db_and_web_server
+  tasks:
+    - name: Clone git repo 
+      git:
+        repo: https://github.com/anfederico/Flaskex
+        dest: /home/vagrant/Flaskex
+    - name: Install requirements 
+      pip:
+        requirements: /home/vagrant/Flaskex/requirements.txt
+    - name: Start web-app 
+      shell:
+        cmd: python /home/vagrant/Flaskex/app.py
+      async: 360
+      poll: 0   
+    - name: Test "{{ ansible_host }}:5000"
+      shell:
+        cmd: curl "{{ ansible_host }}:5000"
+      async: 360
+      poll: 0 

@@ -1,0 +1,2 @@
+[db_and_web_server]
+ubuntu-bionic ansible_host=192.168.56.11 ansible_ssh_port=22 ansible_user=vagrant ansible_private_key_file=/home/marat/Документы/gitlab/02_devops_test/vagrant/.vagrant/machines/default/virtualbox/private_key
